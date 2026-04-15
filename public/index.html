@@ -2,39 +2,226 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Envoi d'Emails</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Éclat Naturel - Boutique de Beauté</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container mt-5">
-        <h2>Formulaire d'envoi d'emails</h2>
-        <form id="emailForm" method="POST" action="/send-email">
-            <div class="form-group">
-                <label for="senderName">Nom de l'expéditeur:</label>
-                <input type="text" id="senderName" name="senderName" class="form-control" required>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo" onclick="showPage('home')">Éclat Naturel</a>
+            <div class="nav-links">
+                <a href="#" onclick="showPage('home')">Accueil</a>
+                <a href="#products">Produits</a>
+                <a href="#" onclick="showPage('login')" id="navLogin">Connexion</a>
+                <a href="#" onclick="showPage('cart')" class="cart-icon">
+                    🛒 <span id="cartCount">0</span>
+                </a>
             </div>
-            <div class="form-group">
-                <label for="senderEmail">Email de l'expéditeur:</label>
-                <input type="email" id="senderEmail" name="senderEmail" class="form-control" required>
+        </div>
+    </nav>
+
+    <!-- Page d'accueil -->
+    <div id="homePage" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Révélez votre beauté naturelle</h1>
+                <p>Des produits de soin luxueux, conçus avec des ingrédients naturels et précieux</p>
+                <button class="btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">Découvrir nos produits</button>
             </div>
-            <div class="form-group">
-                <label for="recipient">Destinataire:</label>
-                <input type="email" id="recipient" name="recipient" class="form-control" required>
+        </section>
+
+        <!-- Features -->
+        <section class="features">
+            <div class="container features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌿</div>
+                    <h3>Ingrédients Naturels</h3>
+                    <p>Formulés avec des ingrédients biologiques et respectueux de votre peau</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>Qualité Premium</h3>
+                    <p>Des produits d'exception pour une efficacité maximale</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🐰</div>
+                    <h3>Cruelty Free</h3>
+                    <p>Aucun test sur les animaux, engagé pour l'éthique</p>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="subject">Sujet:</label>
-                <input type="text" id="subject" name="subject" class="form-control" required>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="products-section">
+            <div class="container">
+                <h2>Nos Produits</h2>
+                <p class="section-subtitle">Une sélection exclusive de soins pour sublimer votre peau</p>
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products will be loaded dynamically -->
+                </div>
             </div>
-            <div class="form-group">
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="emailCount">Nombre d'emails à envoyer:</label>
-                <input type="number" id="emailCount" name="emailCount" min="1" max="100" value="50" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Envoyer</button>
-        </form>
+        </section>
     </div>
+
+    <!-- Page de Connexion -->
+    <div id="loginPage" class="page">
+        <div class="auth-container">
+            <div class="auth-card">
+                <h2>Connexion</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Mot de passe</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Se connecter</button>
+                </form>
+                <p class="auth-switch">Pas encore de compte ? <a href="#" onclick="showPage('register')">S'inscrire</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page d'Inscription -->
+    <div id="registerPage" class="page">
+        <div class="auth-container">
+            <div class="auth-card">
+                <h2>Créer un compte</h2>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="registerName">Nom complet</label>
+                        <input type="text" id="registerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Mot de passe</label>
+                        <input type="password" id="registerPassword" required minlength="6">
+                    </div>
+                    <button type="submit" class="btn-primary">S'inscrire</button>
+                </form>
+                <p class="auth-switch">Déjà un compte ? <a href="#" onclick="showPage('login')">Se connecter</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Panier -->
+    <div id="cartPage" class="page">
+        <div class="container cart-container">
+            <h2>Votre Panier</h2>
+            <div class="cart-content">
+                <div class="cart-items" id="cartItems">
+                    <!-- Cart items will be loaded dynamically -->
+                </div>
+                <div class="cart-summary">
+                    <h3>Résumé</h3>
+                    <div class="summary-row">
+                        <span>Sous-total</span>
+                        <span id="cartSubtotal">0 €</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Livraison</span>
+                        <span>Gratuite</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="cartTotal">0 €</span>
+                    </div>
+                    <button class="btn-primary btn-full" onclick="showPage('checkout')" id="checkoutBtn">Passer la commande</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page de Paiement -->
+    <div id="checkoutPage" class="page">
+        <div class="container checkout-container">
+            <h2>Paiement Sécurisé</h2>
+            <div class="checkout-content">
+                <div class="checkout-form">
+                    <h3>Informations de livraison</h3>
+                    <form id="checkoutForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">Prénom</label>
+                                <input type="text" id="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Nom</label>
+                                <input type="text" id="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Adresse</label>
+                            <input type="text" id="address" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">Ville</label>
+                                <input type="text" id="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="zipCode">Code postal</label>
+                                <input type="text" id="zipCode" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="checkoutEmail" required>
+                        </div>
+                        
+                        <h3>Informations de paiement</h3>
+                        <div class="form-group">
+                            <label for="cardNumber">Numéro de carte</label>
+                            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiryDate">Date d'expiration</label>
+                                <input type="text" id="expiryDate" placeholder="MM/AA" maxlength="5" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" placeholder="123" maxlength="3" required>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary btn-full">Payer <span id="payAmount"></span></button>
+                    </form>
+                </div>
+                <div class="order-summary">
+                    <h3>Résumé de la commande</h3>
+                    <div id="orderSummaryItems"></div>
+                    <div class="summary-row total">
+                        <span>Total à payer</span>
+                        <span id="orderTotal"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page de Confirmation -->
+    <div id="confirmationPage" class="page">
+        <div class="confirmation-container">
+            <div class="confirmation-card">
+                <div class="success-icon">✓</div>
+                <h2>Commande confirmée !</h2>
+                <p>Merci pour votre achat. Votre commande a été traitée avec succès.</p>
+                <p class="order-number">Numéro de commande: <span id="orderNumber"></span></p>
+                <button class="btn-primary" onclick="showPage('home'); clearCart();">Continuer vos achats</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
