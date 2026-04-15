@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Éclat Naturel - Boutique de produits de beauté naturels et luxueux">
+    <meta name="keywords" content="beauté, soins, cosmétiques, naturel, bio, luxe">
     <title>Éclat Naturel - Boutique de Beauté</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
@@ -11,17 +13,25 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="#" class="logo" onclick="showPage('home')">Éclat Naturel</a>
-            <div class="nav-links">
-                <a href="#" onclick="showPage('home')">Accueil</a>
-                <a href="#products">Produits</a>
-                <a href="#" onclick="showPage('login')" id="navLogin">Connexion</a>
-                <a href="#" onclick="showPage('cart')" class="cart-icon">
+            <a href="/" class="logo">Éclat Naturel</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <div class="nav-links" id="navLinks">
+                <a href="/">Accueil</a>
+                <a href="/shop">Boutique</a>
+                <a href="/about">À Propos</a>
+                <a href="/contact">Contact</a>
+                <a href="/account" id="navAccount">Compte</a>
+                <a href="/cart" class="cart-icon">
                     🛒 <span id="cartCount">0</span>
                 </a>
             </div>
         </div>
     </nav>
+
+    <!-- Barre de recherche mobile -->
+    <div class="search-bar-mobile" id="searchBarMobile">
+        <input type="text" id="mobileSearchInput" placeholder="Rechercher un produit..." onkeyup="handleMobileSearch(event)">
+    </div>
 
     <!-- Page d'accueil -->
     <div id="homePage" class="page active">
