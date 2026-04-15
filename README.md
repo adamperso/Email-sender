@@ -1,156 +1,116 @@
-# Éclat Naturel - Boutique de Beauté
+# 🌸 Éclat Naturel - Boutique E-commerce de Beauté
 
-Site e-commerce complet pour une marque de produits de beauté avec design moderne et élégant.
+Une plateforme e-commerce moderne et professionnelle pour une marque de produits de beauté, développée avec une architecture fullstack robuste.
 
-## 🌟 Fonctionnalités
+## ✨ Fonctionnalités
 
-- **Page d'accueil** avec hero section animée et présentation des produits
-- **Catalogue de produits** avec images, descriptions et prix
-- **Système de panier** persistant (localStorage)
-- **Création de compte** avec authentification sécurisée
-- **Paiement sécurisé** avec formulaire de checkout
-- **Confirmation de commande**
-- **Design responsive** adapté à tous les écrans
+### Frontend
+- **Page d'accueil** avec hero section animée et produits en vedette
+- **Boutique complète** avec filtrage par catégories et tri (prix, note, nom)
+- **Pages produits détaillées** avec descriptions, images et avis
+- **Panier persistant** (localStorage) avec gestion des quantités
+- **Recherche de produits** en temps réel
+- **Système d'authentification** (inscription/connexion)
+- **Espace client** avec historique des commandes
+- **Checkout sécurisé** avec formulaire de paiement
+- **Design responsive** adapté mobile, tablette et desktop
 - **Animations fluides** et transitions élégantes
-- **Palette de couleurs beige** moderne et sophistiquée
 
-## 🚀 Installation
+### Backend
+- **API RESTful** complète avec Express.js
+- **Base de données SQLite** avec relations (users, products, categories, orders, reviews)
+- **Authentification JWT** sécurisée
+- **Middleware de sécurité** (Helmet, rate limiting)
+- **Gestion des stocks** automatique
+- **Système d'avis** avec notes moyennes
+- **Dashboard admin** (prêt pour extension)
+- **Transactions SQL** pour les commandes
+
+## 🏗️ Architecture du Projet
+
+```
+/workspace
+├── config/                 # Configuration de l'application
+├── middleware/             # Middlewares Express
+├── models/                 # Modèles de données
+├── routes/                 # Routes API
+├── public/                 # Frontend
+├── data/                   # Données persistantes
+├── app.js                  # Configuration Express
+└── server.js               # Point d'entrée
+```
+
+## 🚀 Installation et Démarrage
 
 ### 1. Installer les dépendances
 
 ```bash
+cd /workspace
 npm install
 ```
 
-### 2. Démarrer le serveur
+### 2. Configurer les variables d'environnement
 
 ```bash
-# Mode développement (avec rechargement automatique)
-npm run dev
+cp .env.example .env
+```
 
-# Mode production
+### 3. Démarrer le serveur
+
+**Mode développement :**
+```bash
+npm run dev
+```
+
+**Mode production :**
+```bash
 npm start
 ```
 
-Le serveur sera accessible sur `http://localhost:3000`
+Le serveur démarre sur **http://localhost:3000**
 
-## 📁 Structure du projet
+## 📦 Endpoints API
 
-```
-/workspace
-├── server.js              # Serveur Node.js/Express
-├── package.json           # Dépendances et scripts
-├── public/
-│   ├── index.html         # Page HTML principale
-│   ├── styles.css         # Styles CSS modernes
-│   └── app.js             # Logique JavaScript frontend
-└── README.md              # Ce fichier
-```
+### Authentification
+- `POST /api/auth/register` - Créer un compte
+- `POST /api/auth/login` - Se connecter
+- `GET /api/auth/profile` - Obtenir son profil
 
-## 🔧 Configuration
+### Produits
+- `GET /api/products` - Liste des produits
+- `GET /api/products/:id` - Détails d'un produit
+- `GET /api/products/categories/all` - Catégories
+- `GET /api/products/search/:query` - Recherche
 
-### Backend (server.js)
-- Express.js pour le serveur web
-- bcryptjs pour le hachage des mots de passe
-- jsonwebtoken pour l'authentification
-- CORS activé pour les requêtes cross-origin
+### Commandes
+- `POST /api/orders` - Créer une commande
+- `GET /api/orders/my-orders` - Mes commandes
 
-### Frontend
-- Vanilla JavaScript (pas de framework)
-- CSS custom avec variables
-- LocalStorage pour la persistance du panier
-- Fetch API pour les requêtes HTTP
+## 🔒 Sécurité
 
-## 🎨 Design
+- Helmet - En-têtes HTTP sécurisés
+- Rate Limiting - Protection contre les attaques
+- JWT - Authentification
+- bcrypt - Hachage des mots de passe
 
-Le design utilise une palette de couleurs beige élégante :
-- Couleur principale : #d4a574 (beige doré)
-- Secondaire : #f5ebe0 (beige clair)
-- Texte : #3d3d3d (gris foncé)
-- Police : Playfair Display (titres) + Lato (texte)
-
-## 🛒 Fonctionnalités E-commerce
-
-1. **Navigation** entre les pages sans rechargement
-2. **Ajout au panier** avec notification toast
-3. **Gestion des quantités** dans le panier
-4. **Authentification** requise pour commander
-5. **Formulaire de paiement** avec validation
-6. **Confirmation** avec numéro de commande
-
-## 📱 Responsive
-
-Le site est entièrement responsive et s'adapte aux :
-- Ordinateurs de bureau
-- Tablettes
-- Téléphones mobiles
-
-## 🔐 Sécurité
-
-- Mots de passe hachés avec bcrypt
-- Tokens JWT pour l'authentification
-- Validation des formulaires côté client et serveur
-- Protection CSRF basique
-
-## 🚀 Déploiement sur GitHub
-
-### 1. Initialiser Git (si ce n'est pas déjà fait)
+## 📤 Pousser sur GitHub
 
 ```bash
 git init
 git add .
-git commit -m "Initial commit - Beauty shop e-commerce"
-```
-
-### 2. Créer un dépôt sur GitHub
-
-Rendez-vous sur https://github.com/new et créez un nouveau dépôt nommé par exemple `beauty-shop`.
-
-### 3. Lier le dépôt local à GitHub
-
-```bash
-git remote add origin https://github.com/VOTRE_NOM_UTILISATEUR/beauty-shop.git
-```
-
-### 4. Pousser le code vers GitHub
-
-```bash
+git commit -m "✨ Éclat Naturel - Site e-commerce complet"
+git remote add origin https://github.com/VOTRE_NOM/eclat-naturel.git
 git branch -M main
 git push -u origin main
 ```
 
-### 5. Hébergement gratuit (optionnel)
+## 🛠️ Technologies
 
-Vous pouvez déployer gratuitement sur :
+- Node.js + Express.js
+- SQLite3
+- JWT + bcryptjs
+- HTML5/CSS3/JavaScript ES6+
 
-**Render :**
-1. Créez un compte sur https://render.com
-2. Cliquez sur "New +" → "Web Service"
-3. Connectez votre dépôt GitHub
-4. Commande de build : `npm install`
-5. Commande de démarrage : `npm start`
+---
 
-**Heroku :**
-```bash
-# Installer Heroku CLI
-heroku login
-heroku create beauty-shop
-git push heroku main
-```
-
-**Vercel/Netlify :** (nécessite une configuration supplémentaire pour le backend)
-
-## 📝 Notes
-
-- Les données sont stockées en mémoire (perdues au redémarrage)
-- Pour une vraie production, utilisez une base de données (MongoDB, PostgreSQL)
-- Intégrez Stripe ou PayPal pour les paiements réels
-- Ajoutez HTTPS pour la sécurité en production
-
-## 👨‍💻 Auteur
-
-Développé comme démonstration e-commerce complète.
-
-## 📄 License
-
-ISC
+**Éclat Naturel** © 2024 - Révélez votre beauté naturelle 🌸
