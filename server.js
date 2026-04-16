@@ -10,9 +10,11 @@ app.listen(PORT, () => {
     console.log('║                                                           ║');
     console.log('║           🌸 ÉCLAT NATUREL - Beauty Shop 🌸              ║');
     console.log('║                                                           ║');
-    console.log(`║   Serveur démarré sur http://localhost:${PORT}               ║');
+    console.log(`║   Serveur démarré sur http://localhost:${PORT}               ║`);
     console.log('║                                                           ║');
     console.log('║   Mode: ' + config.nodeEnv.padEnd(42) + '║');
     console.log('║                                                           ║');
     console.log('╚═══════════════════════════════════════════════════════════╝');
 });
+
+module.exports = app;
